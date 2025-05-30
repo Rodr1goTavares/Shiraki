@@ -1,4 +1,4 @@
-# 🚀 sshtask
+# 🚀 Shiraki
 
 A powerful CLI tool to automate SSH tasks across multiple remote servers. Execute shell commands or scripts securely and in parallel, with flexible configuration and optional log persistence.
 
@@ -18,7 +18,7 @@ A powerful CLI tool to automate SSH tasks across multiple remote servers. Execut
 
 ## ⚙️ Configuration Format
 
-By default, `sshtask` loads tasks from `~/.sshtask/pipes.json` (or `.yaml`). Each entry defines a task with the following fields:
+By default, `Shiraki` loads tasks from `~/.shiraki/pipes.json` (or `.yaml`). Each entry defines a task with the following fields:
 
 ```json
 [
@@ -61,14 +61,17 @@ By default, `sshtask` loads tasks from `~/.sshtask/pipes.json` (or `.yaml`). Eac
 ## 🚀 Usage Examples
 
 ```bash
-# Run command directly
-sshtask run --hosts dev,prod --cmd "uptime"
+# Run command directly (run all active tasks in ~/.shiraki/tasks.json)
+sshtask run
+
+# Run with a command and profiles
+sshtask run --task dev,prod --cmd "uptime"
 
 # Run a script remotely on multiple servers
-sshtask run --script ./deploy.sh --hosts server1,server2
+sshtask run --script ./deploy.sh --task server1,server2
 
-# Load tasks from configuration file
-sshtask run --config ~/.sshtask/pipes.json
+# Load tasks from a custom task file
+sshtask run --file ~/.shiraki/custom-tasks.json
 ```
 
 ---
