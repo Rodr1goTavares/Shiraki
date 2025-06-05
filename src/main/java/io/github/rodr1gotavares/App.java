@@ -1,13 +1,16 @@
 package io.github.rodr1gotavares;
 
-import io.github.rodr1gotavares.adapters.cli.RunCommand;
-import io.github.rodr1gotavares.core.entities.Task;
-import io.github.rodr1gotavares.core.usecases.DispatchConfiguredTasks;
+import io.github.rodr1gotavares.core.ports.FileProvider;
+import io.github.rodr1gotavares.core.ports.TaskDeserializer;
+import io.github.rodr1gotavares.core.usecases.ProcessTaskFilePathUseCase;
+import io.github.rodr1gotavares.infra.adapters.JsonTaskDeserializer;
+import io.github.rodr1gotavares.infra.adapters.LocalTaskFileProvider;
+import io.github.rodr1gotavares.infra.cli.RunCommand;
+import io.github.rodr1gotavares.core.ports.PathProvider;
+import io.github.rodr1gotavares.infra.adapters.SystemPathProvider;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Rodr1goTavares - <a href="https://github.com/Rodr1goTavares">GitHub</a>
@@ -19,11 +22,19 @@ import java.util.List;
 public class App implements Runnable {
 
     public static void main(String[] args) {
-        List<Task> tasks = new ArrayList<>();
+        FileProvider fileProvider = new LocalTaskFileProvider();
 
-        DispatchConfiguredTasks dispatchConfiguredTasks = new DispatchConfiguredTasks(tasks);
+        PathProvider pathProvider = new SystemPathProvider();
 
-        Runnable runCommand = new RunCommand(dispatchConfiguredTasks);
+        TaskDeserializer taskDeserializer = new JsonTaskDeserializer();
+
+        ProcessTaskFilePathUseCase filePathUseCase = new ProcessTaskFilePathUseCase(
+                fileProvider,
+                pathProvider
+        );
+
+
+        Runnable runCommand = new RunCommand(filePathUseCase, taskDeserializer);
 
         CommandLine cmd = new CommandLine(new App())
                 .addSubcommand(runCommand);

@@ -7,11 +7,11 @@ import java.util.List;
 /**
  * @author Rodr1goTavares - <a href="https://github.com/Rodr1goTavares">GitHub</a>
  */
-public class DispatchConfiguredTasks {
+public class DispatchTasksUsecase {
 
     private final List<Task> tasks;
 
-    public DispatchConfiguredTasks(List<Task> tasks) {
+    public DispatchTasksUsecase(List<Task> tasks) {
         this.tasks = tasks;
     }
 

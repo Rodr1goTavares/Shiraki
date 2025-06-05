@@ -1,4 +1,4 @@
-package io.github.rodr1gotavares.adapters;
+package io.github.rodr1gotavares.infra.adapters;
 
 import io.github.rodr1gotavares.core.entities.SshTask;
 import io.github.rodr1gotavares.core.ports.RemoteExecutor;
