@@ -1,8 +1,11 @@
 package io.github.rodr1gotavares.infra.adapters;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import io.github.rodr1gotavares.core.entities.Task;
 import io.github.rodr1gotavares.core.ports.TaskDeserializer;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
@@ -12,7 +15,9 @@ public class JsonTaskDeserializer implements TaskDeserializer {
 
     @Override
     public List<Task> deserialize(byte[] bytes) {
-        return List.of();
+        Gson gson = new Gson();
+        Type listType = new TypeToken<List<Task>>() {}.getType();
+        return gson.fromJson(new String(bytes), listType);
     }
 
 }

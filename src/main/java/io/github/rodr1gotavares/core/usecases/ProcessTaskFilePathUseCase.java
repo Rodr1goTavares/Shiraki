@@ -1,7 +1,7 @@
 package io.github.rodr1gotavares.core.usecases;
 
 import io.github.rodr1gotavares.core.ports.FileProvider;
-import io.github.rodr1gotavares.core.ports.PathProvider;
+import io.github.rodr1gotavares.core.ports.SystemPathProvider;
 
 
 /**
@@ -11,19 +11,19 @@ public class ProcessTaskFilePathUseCase {
 
     private final FileProvider fileProvider;
 
-    private final PathProvider pathProvider;
+    private final SystemPathProvider systemPathProvider;
 
 
     public ProcessTaskFilePathUseCase(
             FileProvider fileProvider,
-            PathProvider pathProvider
+            SystemPathProvider systemPathProvider
     ) {
         this.fileProvider = fileProvider;
-        this.pathProvider = pathProvider;
+        this.systemPathProvider = systemPathProvider;
     }
 
-    public byte[] getDefaultFileBytes() {
-        String defaultTaskFilePath = this.pathProvider.getDefaultTaskPath();
+    public byte[] getDefaultFileByteArray() {
+        String defaultTaskFilePath = this.systemPathProvider.getDefaultTaskPath();
         return this.fileProvider.getBytes(defaultTaskFilePath);
     }
 

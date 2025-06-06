@@ -5,9 +5,9 @@ import io.github.rodr1gotavares.core.ports.TaskDeserializer;
 import io.github.rodr1gotavares.core.usecases.ProcessTaskFilePathUseCase;
 import io.github.rodr1gotavares.infra.adapters.JsonTaskDeserializer;
 import io.github.rodr1gotavares.infra.adapters.LocalTaskFileProvider;
+import io.github.rodr1gotavares.infra.adapters.SystemSystemPathProvider;
 import io.github.rodr1gotavares.infra.cli.RunCommand;
-import io.github.rodr1gotavares.core.ports.PathProvider;
-import io.github.rodr1gotavares.infra.adapters.SystemPathProvider;
+import io.github.rodr1gotavares.core.ports.SystemPathProvider;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
@@ -24,13 +24,13 @@ public class App implements Runnable {
     public static void main(String[] args) {
         FileProvider fileProvider = new LocalTaskFileProvider();
 
-        PathProvider pathProvider = new SystemPathProvider();
+        SystemPathProvider systemPathProvider = new SystemSystemPathProvider();
 
         TaskDeserializer taskDeserializer = new JsonTaskDeserializer();
 
         ProcessTaskFilePathUseCase filePathUseCase = new ProcessTaskFilePathUseCase(
                 fileProvider,
-                pathProvider
+                systemPathProvider
         );
 
 

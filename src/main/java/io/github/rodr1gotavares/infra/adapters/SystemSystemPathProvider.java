@@ -1,11 +1,9 @@
 package io.github.rodr1gotavares.infra.adapters;
 
-import io.github.rodr1gotavares.core.ports.PathProvider;
-
 /**
  * @author Rodr1goTavares - <a href="https://github.com/Rodr1goTavares">GitHub</a>
  */
-public class SystemPathProvider implements PathProvider {
+public class SystemSystemPathProvider implements io.github.rodr1gotavares.core.ports.SystemPathProvider {
 
     @Override
     public String getHomePath() {

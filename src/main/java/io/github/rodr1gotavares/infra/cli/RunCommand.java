@@ -34,9 +34,10 @@ public class RunCommand implements Runnable {
     public void run() {
         byte[] taskFileBytes = customTaskFilePath.isFile() ?
                 this.processTaskPathUseCase.toByteArray(customTaskFilePath.getPath()) :
-                this.processTaskPathUseCase.getDefaultFileBytes();
+                this.processTaskPathUseCase.getDefaultFileByteArray();
 
         List<Task> tasks = this.taskDeserializer.deserialize(taskFileBytes);
+
     }
 
 }

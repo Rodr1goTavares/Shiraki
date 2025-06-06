@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * @author Rodr1goTavares - <a href="https://github.com/Rodr1goTavares">GitHub</a>
  */
-public abstract class Task {
+public class Task {
     private String name;
     private String description;
     private String host;
@@ -37,27 +37,47 @@ public abstract class Task {
     }
 
     public String getName() { return name; }
+
     public String getDescription() { return description; }
+
     public String getHost() { return host; }
+
     public int getPort() { return port; }
+
     public String getRemoteWorkDir() { return remoteWorkDir; }
+
     public Map<String, String> getRemoteEnv() { return remoteEnv; }
+
     public String getRemoteCommand() { return remoteCommand; }
+
     public List<String> getFilesToSend() { return filesToSend; }
+
     public boolean isSaveLogs() { return saveLogs; }
+
     public String getLogsFolder() { return logsFolder; }
+
     public boolean isActive() { return active; }
 
     public void setName(String name) { this.name = name; }
+
     public void setDescription(String description) { this.description = description; }
+
     public void setHost(String host) { this.host = host; }
+
     public void setPort(int port) { this.port = port; }
+
     public void setRemoteWorkDir(String remoteWorkDir) { this.remoteWorkDir = remoteWorkDir; }
+
     public void setRemoteEnv(Map<String, String> remoteEnv) { this.remoteEnv = remoteEnv; }
+
     public void setRemoteCommand(String remoteCommand) { this.remoteCommand = remoteCommand; }
+
     public void setFilesToSend(List<String> filesToSend) { this.filesToSend = filesToSend; }
+
     public void setSaveLogs(boolean saveLogs) { this.saveLogs = saveLogs; }
+
     public void setLogsFolder(String logsFolder) { this.logsFolder = logsFolder; }
+
     public void setActive(boolean active) { this.active = active; }
 
     @Override
